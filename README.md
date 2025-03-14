@@ -1,11 +1,11 @@
-What you need understand before learn TypeScript
+## What you need understand before learn TypeScript
 
 1. JavaScript Basics
 2. Node.js Environment
 3. Version Control (Git)
 4. Package Manager (npm/pnpm)
 
-How to run TypeScript code:
+## How to run TypeScript code:
 
 1. Install several dependencies:
 
