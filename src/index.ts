@@ -184,27 +184,53 @@ console.log(wordArrayToString(["Hello", "World"]))
 
 // #endregion
 
-// #region Basic Class
+// #region Generic
 
-// class Person {
-//   name: string;
-//   age?: number;
-//   constructor(name: string, age?: number) {
-//     this.name = name;
-//     this.age = age;
-//   }
-//   greet(): string {
-//     return `Hello, my name is ${this.name}`;
-//   }
-// }
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+console.log(identity<string>("Hello"));
+console.log(identity<number>(42));
+
+async function fetchPostData<T>() {
+  // Like the browser fetch API, the default method is GET
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+  const data: T = await response.json();
+  return data
+  // returns something like:
+  //   {
+  //   userId: 1,
+  //   id: 1,
+  //   title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
+  //   body: 'quia et suscipit\n' +
+  //     'suscipit recusandae consequuntur expedita et cum\n' +
+  //     'reprehenderit molestiae ut ut quas totam\n' +
+  //     'nostrum rerum est autem sunt rem eveniet architecto'
+  // }
+}
+
+type Post = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+async function displayData() {
+  const postData = await fetchPostData<Post>();
+  console.log(postData);
+  console.log(postData.userId);
+  console.log(postData.id);
+  console.log(postData.title);
+  console.log(postData.body);
+}
+displayData()
 
 // #endregion
 
-
-
 // -----------------------------------------------------------------------------------
 
-// Generic Types
 // type vs interface // I am not sure if this is needed for basic, but for now, I will use type for consistency.
 // satisfies
 // any or unknown
