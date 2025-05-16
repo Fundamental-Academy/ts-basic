@@ -34,15 +34,19 @@ enum RGB {
 // let myFavoriteColor: TRGB = "Yellow"; // Error: Type '"Yellow"' is not assignable to type 'TRGB'.
 
 const myFavoriteColorEnum: TRGB = "Green";
-console.log(myFavoriteColorEnum); // Output: Red
+console.log(myFavoriteColorEnum); // Output: Green
 
-console.log(RGB.Blue); // Output: 0
+console.log(RGB.Blue); // Output: Blue
+
+const mySecondFavoriteColor: RGB = RGB.Red;
+
+console.log(mySecondFavoriteColor); // Output: Red
 
 // #endregion
 
 // #region Basic Array
 
-const fruits = ["Apple", "Banana", "Cherry"];
+const fruits: string[] = ["Apple", "Banana", "Cherry"];
 
 fruits.push("Grape");
 
@@ -72,11 +76,13 @@ personalInfo.age = 26;
 
 console.log(personalInfo);
 
+// personalInfo.name = 123; // Error: Type 'number' is not assignable to type 'string'.
+// personalInfo.isStudent = "true"; // Error: Type 'string' is not assignable to type 'boolean'.
+// personalInfo.height = 170; // Error: Property 'height' does not exist on type 'PersonalInfo'.
+
 const myPersonalInfo: PersonalInfo = {
-  name: "Putut",
-  age: 31,
-  isStudent: true
-}
+  name: "Pututtt",
+} // note error, because `age` and `isStudent` is optional
 
 myPersonalInfo.name = "Putu"
 myPersonalInfo.age = 30
