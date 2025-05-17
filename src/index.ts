@@ -89,6 +89,36 @@ myPersonalInfo.age = 30
 
 console.log(myPersonalInfo)
 
+// type People = Array<{
+//   name: string;
+//   age?: number;
+//   isStudent?: boolean;
+// }>
+
+// type People = {
+//   name: string;
+//   age?: number;
+//   isStudent?: boolean;
+// }[]
+
+type People = PersonalInfo[];
+
+const people: People = [{
+  name: "Nyoman",
+  age: 25,
+  isStudent: true
+}, {
+  name: "Made",
+  age: 29,
+  isStudent: true
+}, {
+  name: "Kadek",
+  age: 23,
+  isStudent: false
+}]
+
+console.log(people)
+
 // #endregion
 
 // #region Basic Record
@@ -199,9 +229,9 @@ function identity<T>(arg: T): T {
 console.log(identity<string>("Hello"));
 console.log(identity<number>(42));
 
-async function fetchPostData<T>() {
+async function fetchPostData<T>(stringUrl: string): Promise<T> {
   // Like the browser fetch API, the default method is GET
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+  const response = await fetch(stringUrl);
   const data: T = await response.json();
   return data
   // returns something like:
@@ -224,7 +254,7 @@ type Post = {
 }
 
 async function displayData() {
-  const postData = await fetchPostData<Post>();
+  const postData = await fetchPostData<Post>('https://jsonplaceholder.typicode.com/posts/1');
   console.log(postData);
   console.log(postData.userId);
   console.log(postData.id);
