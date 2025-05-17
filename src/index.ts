@@ -265,6 +265,31 @@ displayData()
 
 // #endregion
 
+// #region Excercise 1
+// Convert this javascript code to typescript, JS version can be found in example3.js
+
+const humanData = {
+  firstName: "Gus",
+  lastName: "Dogler",
+  weight: 90,
+  height: 165,
+  bloodType: "A",
+  age: 30,
+};
+
+function fullName(firstName: string, lastName: string): string {
+  return firstName + " " + lastName;
+}
+
+function BMICalculationWithCallback(human: typeof humanData, callbackFullName: typeof fullName): string {
+  const bmiIndex = human.height / human.weight;
+  return (
+    callbackFullName(human.firstName, human.lastName) + " BMI Index = " + bmiIndex
+  );
+}
+
+// #endregion
+
 // -----------------------------------------------------------------------------------
 
 // type vs interface // I am not sure if this is needed for basic, but for now, I will use type for consistency.
